@@ -1,24 +1,44 @@
 # 🫀 ECG Image Classification & Visualization
 
 This project uses an **ensemble of CNN models** (**VGG16**, **VGG19**, **ResNet50**) to classify ECG images into arrhythmia categories.  
-It serves predictions via a **FastAPI** backend and visualizes results through an **R Shiny** dashboard.
+It serves predictions through a **FastAPI** backend and visualizes results in an **R Shiny** dashboard.
+
+---
+
+## 🏷 Classes & Their Meanings
+
+The model predicts which of the following 5 classes an uploaded ECG image belongs to:
+
+- **Class N (Normal):**  
+  Represents normal sinus rhythm, where the heart beats regularly without anomalies.
+
+- **Class S (Supraventricular ectopic beat):**  
+  Premature beats originating above the heart’s ventricles, often benign but sometimes linked to arrhythmias.
+
+- **Class V (Ventricular ectopic beat):**  
+  Premature beats originating in the ventricles; may indicate structural heart issues.
+
+- **Class F (Fusion beat):**  
+  Result from fusion between normal and ectopic beats; relatively rare.
+
+- **Class Q (Unknown beat):**  
+  Unclassified or ambiguous beats, often noise or rare arrhythmias.
 
 ---
 
 ## 📊 Dataset
 
-This project uses the **ECG Arrhythmia Image Dataset**, an image version of the well-known heartbeat dataset:  
+This project uses the **ECG Arrhythmia Image Dataset**, an image version of this dataset:  
 ➡️ [Original dataset on Kaggle](https://www.kaggle.com/shayanfazeli/heartbeat)
 
-**Context & Abstract:**
-- Composed of two collections:
+### Context & Abstract
+- Combines two collections:
   - MIT-BIH Arrhythmia Dataset
   - PTB Diagnostic ECG Database
-- Signals correspond to ECG heartbeats in both normal and pathological cases.
-- Images are preprocessed and segmented into individual heartbeats.
-- Used to explore deep learning and transfer learning for heartbeat classification.
+- Images represent ECG heartbeat segments labeled as normal or various arrhythmias.
+- Enables deep learning and transfer learning on heartbeat classification tasks.
 
-**Details:**
+### Dataset Details:
 
 | Dataset                        | Samples | Categories | Source                                       | Classes                                                                                 |
 | ----------------------------- | ------: | ---------: | -------------------------------------------- | --------------------------------------------------------------------------------------: |
@@ -26,7 +46,7 @@ This project uses the **ECG Arrhythmia Image Dataset**, an image version of the 
 | PTB Diagnostic ECG Database   | 14,552  | 2          | Physionet                                   | Normal vs Myocardial Infarction                                                        |
 
 - Sampling Frequency: **125 Hz**
-- Data split: 80% training, 20% testing
+- Data split: **80% training, 20% testing**
 
 ---
 
@@ -34,16 +54,16 @@ This project uses the **ECG Arrhythmia Image Dataset**, an image version of the 
 
 - **Backend:** FastAPI, Uvicorn
 - **Deep Learning:** TensorFlow (VGG16, VGG19, ResNet50)
-- **Data & Image Processing:** Pillow, NumPy, python-multipart
+- **Image processing:** Pillow, NumPy, python-multipart
 - **Visualization:** R (Shiny, ggplot2, plotly, httr)
 
 ---
 
 ## ✅ Features
 
-- Ensemble CNN improves accuracy by combining predictions.
-- Upload ECG images to get instant model predictions.
-- Visual dashboard for exploring and comparing predictions.
+- Ensemble CNN improves prediction accuracy.
+- REST API built with FastAPI serves real-time predictions.
+- R Shiny dashboard to upload ECG images and view predicted classes and plots interactively.
 
 ---
 
